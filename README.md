@@ -68,5 +68,6 @@ medibaは、当社のサービスが社会に与える影響を重要視して�
 
 - [アプリケーション開発ガイドライン](AppDeveloperGuideline.md)
 - [インフラ構築ガイドライン](InfraBuildGuideline.md)
-- [インフラ運用ガイドライン](InfraOpsGuideline.md)
+- [システム運用ガイドライン](OpsGuideline.md)
+- [リリースガイドライン](ReleaseGuideline.md)
 
