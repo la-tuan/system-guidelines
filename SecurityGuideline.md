@@ -142,6 +142,48 @@ daemon:x:2:2:daemon:/sbin:/sbin/nologin
 1. アクセス権限は公開用ディレクトリとそれ以外で分け、公開するディレクトリ以外の箇所はアクセス権限を強固にしましょう。
 
 ### 1.1.4. HTTPレスポンス分割の防御
+#### 脆弱性概要
+外部からの入力データを使用して動的にHTTPレスポンスヘッダーを出力するwebアプリケーションの脆弱性を利用し、正規のHTTPレスポンスを「CR+LF」で分割し悪意のHTTPレスポンスを生成する攻撃を指します。  
+直接的には脆弱性のあるページが影響を受けますが、悪意のHTTPレスポンスがProxyにキャッシュされる事により、他ユーザが悪意のHTTPレスポンスを取得することになり、ページの偽装/XSS/Cookieの操作 などの攻撃が可能になります。
+
+#### 例
+ユーザーが入力した番号のページへリダイレクトするwebサイトにおいて、HTTPレスポンスヘッダーの「Location:」フィールドの値として出力するURLのGETパラメータが外部から入力される場合  
+
+**正常なHTTPレスポンスヘッダー**
+```
+HTTP/1.1 302 Moved
+Temporarily
+Content-Type: text/html
+Location: http://sample.com/page.php?id=1
+```
+
+**「1」の代わりに以下の内容をパラメータとして送信する**
+```
+1%0d%0aContent-Length:%200%0d%0a%0d%0aHTTP/1.1%20%200%20OK%0d%0aContent-Type:%20text/html%0d%0aContent-Length:%209999%0d%0a%0d%0a<html>悪意のあるコンテンツ</html>
+```
+
+**生成されるレスポンス**
+```
+HTTP/1.1 302 Moved
+Temporarily
+Content-Type: text/html
+Location: http://sample.com/page.php?id=1
+Content-Length:0
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length:9999
+
+<html>悪意のあるコンテンツ</html>
+```
+HTTPの仕様では、改行コード(「CR+LF」(%0d%0a))2つによってヘッダーの終了を表します。  
+上の例では｢Content-Length:0｣の後で1つのレスポンスが終了し、｢HTTP/1.1 200 OK｣以降は別のレスポンスと解釈されます。  
+2番目のレスポンスの内容は、完全に攻撃者の自由となってしまいます。
+
+#### 対策
+1. HTTPヘッダとして出力する箇所には「CR/LF」(%0d%0a)」を入れないようにしましょう。
+1. ユーザー入力文字列をHTTPレスポンスヘッダー挿入する際には、同じく「CR/LF」(%0d%0a)」を削除しましょう。
+
 
 ### 1.1.5. メールヘッダインジェクションの防御
 
