@@ -200,6 +200,39 @@ bool mail ( string $to , string $subject , string $message [, string $additional
 1. PHP 7.2からは$additional_headerは配列で指定することが可能になったため、文字列ではなく配列を利用しましょう。
 
 ### 1.1.6. 不正ファイルアップロードの防御
+#### 脆弱性概要
+閲覧者からのファイルアップロードを受け付ける場合、アップロードされたファイルを利用して不正な操作をする攻撃を指します。  
+アップロードされたファイルに対してはファイル名、保存場所、ファイル内容等に対しチェックを実施しましょう。
+
+#### 例
+**脆弱性のあるコード例(PHP)**  
+```
+<?php
+//ファイルをアップロードして、公開フォルダ「images」直下にそのままのファイル名で置く。
+if (!empty($_FILES['uploadfile']['tmp_name']）) {
+    move_uploaded_file($_FILES['uploadfile']['tmp_name'], dirname(__FILE__).'/images/'.$_FILES['uploadfile']['name']);
+    header('Location:http://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']);
+    exit;
+}
+header("Content-Type: test/html; charset=Shift_JIS");
+echo "
+<html><body>
+<form action='' method='post' enctype='multipart/form-data'>
+    <input type='file' name='uploadfile' />
+    <input type='submit' value='upload' />
+</form>
+</body></html>
+";
+```
+**問題点**  
+- ファイルに対する入力チェックを行っていなため、画像以外のファイルを公開フォルダにアップロードされてしまいます。
+- 悪意のあるスクリプトがwebサイト上に公開される可能性があります。
+
+#### 対策
+1. アップロードファイルの保存先は公開フォルダの外に出しましょう。  
+公開フォルダの外が利用できない場合には、ファイル名を拡張子のないランダムなものに変更して保存し、アップロードファイルへのアクセスについては、別途、処理をするスクリプトを書きましょう。
+1. 拡張子名に対してバリデーションをかけ、jpg/pngなど以外はエラーとするようにしましょう。  
+また、拡張子とファイルの中身が一致しているかを確認しましょう。(PHPの場合、getimagesize()関数など)
 
 ### 1.1.7. 改竄防御
 
