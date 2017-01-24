@@ -39,8 +39,8 @@ $sth = $dbh->query($sql);
 $password →
 「'; DELETE FROM ユーザマスタ WHERE 'A' = 'A」
 
-**実行されるSQL**
-1. SELECT * FROM ユーザマスタ WHERE ユーザID = '' AND パスワード = '';
+**実行されるSQL**  
+1. SELECT * FROM ユーザマスタ WHERE ユーザID = '' AND パスワード = '';  
 1. DELETE FROM ユーザマスタ WHERE 'A' = 'A'
 
 ##### 対策
