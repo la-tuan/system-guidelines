@@ -58,12 +58,17 @@
 ### 3.5 エラーハンドリング
 - 画面表示を適切に行うこと
   - 予期せぬ例外（接続エラー、データ不整合など）が起こった際にも適切なエラー画面の表示が行われるよう配慮すること
-    - 条件分岐でdefaultやelseの値を定義すること
-    - PHPの場合、try/catchを利用すること
-    - ※PHP実装例記載する？（http://www.phppro.jp/phptips/archives/vol45/2）
+  > 条件分岐でdefaultやelseの値を定義すること
+  > PHPの場合、try/catchを利用すること
+  > ※PHP実装例記載する？（http://www.phppro.jp/phptips/archives/vol45/2）
 - ログの出力
+ - ERROR/WARNING時にエラーログが出力されるよう設定すること
+ > http://php.net/manual/ja/errorfunc.configuration.php
+ > http://php.net/manual/ja/function.error-reporting.php
 - 監視設定
-
+ - 全てのサービスは原則的に監視システムと連携を行う
+ - 監視の設定により、アラートレベルを適切に設定すること
+ 
 ### 3.6 セッションの取扱い
 - セッション管理は原則的にDBを利用する
 - セッションIDはフレームワークに付随しているものを利用するか、独自に実装する場合は、安易に推測できるものを利用してはならない。
