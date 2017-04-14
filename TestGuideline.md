@@ -181,10 +181,10 @@ public function myFunction($type)
 	} else {
 		echo "処理2";
 	}
-	
+
 	if ($type === 'C') {
 		echo "処理3";
-	} 
+	}
 }
 ```
 
@@ -339,7 +339,6 @@ public function myFunction($type)
       * 経済産業省基準　IPA基準　安全なウェブサイトの作り方  
         https://www.ipa.go.jp/security/vuln/websecurity.html
 
-* KDDI社からのSOC診断を受けないアプリケーション開発案件は、開発工程の中でZAPにて診断を行い、S-in判定時の判断材料として提出すること。
 
 ## 6. 結合テスト
 
