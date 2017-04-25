@@ -84,7 +84,7 @@ medibaではログ収集する共通基盤を提供しているため、共通�
 
 #### 3.1.1 アクセスログ収集について
 
-[TreasueData by IDCF](https://console.ybi.idcfcloud.net/databases)にアクセスログを一元的に集約しております。
+[TreasueData by IDCF](https://console.ybi.idcfcloud.net/databases)にアクセスログを一元的に集約しています。
 共通基盤では、ログ収集、共通UID発行機能を提供しています。利用については[こちら](https://creative-m.backlog.jp/wiki/COTTON_IRAI/Home)から申請をして下さい。
 
 ## 4. 管理ツールにおけるログの扱い
