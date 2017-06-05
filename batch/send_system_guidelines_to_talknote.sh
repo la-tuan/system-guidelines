@@ -18,7 +18,12 @@ function getSystemGuidelines() {
 	count=$(cat $count_file)
     fi
 
+    max_count=$(cat $compiled_file | wc -l)
     while :; do
+	if [ $max_count -le $count ]; then
+	    count=1
+	fi
+
 	line=$(sed -n ${count}P $compiled_file | tr '+' ' ' | tr '|' "\n")
 	if [[ 1 -eq $(echo "$line" | wc -l) ]]; then
 	    echo "$line"
