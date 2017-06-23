@@ -7,3 +7,6 @@ Session.vim
 
 # Backup files
 *~
+
+# Node.js
+node_modules
