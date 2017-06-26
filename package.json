@@ -2,7 +2,6 @@
   "name": "system-guidelines",
   "version": "0.0.1",
   "description": "Guidlines for mediba developers.",
-  "main": "index.js",
   "repository": "git@github.com:mediba-system/system-guidelines.git",
   "author": "[mediba] mediba Developers <dev@mediba.jp>",
   "license": "none",
