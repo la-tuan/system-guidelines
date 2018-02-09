@@ -174,3 +174,4 @@ CloudWatchやKCCSのZabbix監視において、以下の項目を監視するこ
 > ipv6.test-XXXXXXXXXX.ap-northeast-1.elb.amazonaws.com (AAAA Record)
 > dualstack.test-XXXXXXXXXX.ap-northeast-1.elb.amazonaws.com (A or AAAA Record)
 - 特別な理由によりIPｖ６通信対応を行う場合を除き、A Record（IPｖ４のみ対応）のCNAMEを利用すること。
+  - ipv6〜/dualstack〜 で始まるCNAMEは利用しない。
