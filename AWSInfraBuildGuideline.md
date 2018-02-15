@@ -165,3 +165,13 @@ CloudWatchやKCCSのZabbix監視において、以下の項目を監視するこ
 - SSL証明書を購入した場合、SSL証明書管理担当者に伝えて期限の管理を引き継ぎます。
 - CSR,秘密鍵は開発担当エンジニアが厳重に保管することとします。
 - 新規事業等の場合、特に理由がない場合はACMによる証明書を利用することを推奨します。
+
+## 13. IPv6通信への対応について
+
+- サービス主管や受託元の要望など、特別な理由がある場合を除き、IPv６通信への対応は行わないものとします。
+- ロードバランサ（ELB/CLB/ALB/NLB）を作成す際、以下のような3つのCNAMEが用意されます。
+> my-load-balancer-XXXXXXXXXX.ap-northeast-1.elb.amazonaws.com (A Record)
+> ipv6.test-XXXXXXXXXX.ap-northeast-1.elb.amazonaws.com (AAAA Record)
+> dualstack.test-XXXXXXXXXX.ap-northeast-1.elb.amazonaws.com (A or AAAA Record)
+- 特別な理由によりIPv６通信対応を行う場合を除き、A Record（IPv４のみ対応）のCNAMEを利用すること。
+  - ipv6〜/dualstack〜 で始まるCNAMEは利用しない。
