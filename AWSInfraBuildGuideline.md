@@ -168,10 +168,10 @@ CloudWatchやKCCSのZabbix監視において、以下の項目を監視するこ
 
 ## 13. IPv6通信への対応について
 
-- サービス主管や受託元の要望など、特別な理由がある場合を除き、IPｖ６通信への対応は行わないものとします。
+- サービス主管や受託元の要望など、特別な理由がある場合を除き、IPv６通信への対応は行わないものとします。
 - ロードバランサ（ELB/CLB/ALB/NLB）を作成す際、以下のような3つのCNAMEが用意されます。
 > my-load-balancer-XXXXXXXXXX.ap-northeast-1.elb.amazonaws.com (A Record)
 > ipv6.test-XXXXXXXXXX.ap-northeast-1.elb.amazonaws.com (AAAA Record)
 > dualstack.test-XXXXXXXXXX.ap-northeast-1.elb.amazonaws.com (A or AAAA Record)
-- 特別な理由によりIPｖ６通信対応を行う場合を除き、A Record（IPｖ４のみ対応）のCNAMEを利用すること。
+- 特別な理由によりIPv６通信対応を行う場合を除き、A Record（IPv４のみ対応）のCNAMEを利用すること。
   - ipv6〜/dualstack〜 で始まるCNAMEは利用しない。
