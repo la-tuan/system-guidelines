@@ -190,8 +190,3 @@ SSL証明書のバージョンを確認する。
 　　　　参考：http://dev.classmethod.jp/cloud/cloudfront-ssl-options-summary/）
 
 ----
-
-httpsのサイト内にhttpのリクエストが混在していないことを確認する。
-※画像やCSS、ajaxなど
-
-----
