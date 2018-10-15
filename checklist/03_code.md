@@ -20,9 +20,6 @@
 - 例） Yii2.0：https://www.yiiframework.com/doc/guide/2.0/ja/caching-data
 
 ---
-hashKey : false
-keyPrefix : プロジェクト固定
-※最大文字列長の制約などhash化が必要な場合を除く(hash化のメリットとのトレードオフ)"
 
 EXPLAINを使用してSQLクエリが最適化されていること。
 
