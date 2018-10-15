@@ -19,9 +19,14 @@
 
 - 例） Yii2.0：https://www.yiiframework.com/doc/guide/2.0/ja/caching-data
 
----
+----
 
-EXPLAINを使用してSQLクエリが最適化されていること。
+3. SQLクエリ
+
+- 発行されるSQLクエリが最適化されていること。
+  - EXPLAINを使用して確認を行うこと。
+  
+----
 
 ブラウザのレンダリングを極力ブロックしないよう、処理を記述すること
 
