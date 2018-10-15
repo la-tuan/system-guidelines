@@ -105,10 +105,6 @@ Javascriptを記述する際は、以下に注意すること
 
 ----
 
-user-scalable=no は使わないこと。
-
-
-
 
 
 
