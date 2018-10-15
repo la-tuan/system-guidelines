@@ -8,10 +8,17 @@
 
 ----
 
-"振り分け先設定の指定とweightの設定がなされていること。
-(※yiiのcacheのservers設定で、weightの設定が適切になされていること)"
+2. KVSを利用したキャッシュ
 
-"原則、Key値はhash化による自動生成ではなく、Prefix指定とすること。(※以下、yiiでの推奨設定)
+キャッシュにKVSを利用する際は、以下の考慮がされていること
+
+- EXPIRE値が適切に設定されていること。
+- 振り分け先の設定がなされていること。
+- 原則、Key値はhash化による自動生成ではなく、Prefix指定とすること
+  - ※最大文字列長の制約などhash化が必要な場合を除く
+
+- 例） Yii2.0：https://www.yiiframework.com/doc/guide/2.0/ja/caching-data
+
 ---
 hashKey : false
 keyPrefix : プロジェクト固定
